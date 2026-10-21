@@ -14,7 +14,7 @@ After local validation, install this directory through the desktop application's
 
 ## Features
 
-- Card-based service layout with icon-and-text status badges; check time is secondary, not a live-online claim. External services remain read-only and explicitly unprobed.
+- Official settings-style cards and outline/primary buttons with concise status badges; internal check times and explanatory notices are not rendered. External services remain read-only and explicitly unprobed.
 - Import strict `mcpServers` JSON, with preview and disabled-by-default creation.
 - Native stdio and Streamable HTTP transports (`type: http` is converted).
 - Enable, disable, remove or explicitly replace manager-owned service configurations.

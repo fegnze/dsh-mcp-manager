@@ -34,6 +34,9 @@ test('card status decisions are explicit observations, not realtime health claim
  assert.doesNotMatch(JSON.stringify(statusView(passed,{})),/实时在线/);
  assert.doesNotMatch(JSON.stringify(statusView({...passed,lastCheck:{successful:false,error:'SECRET'}},{})),/SECRET/);
  assert.match(source,/mcpm-card/);
+ assert.doesNotMatch(source,/上次检查|非实时|mcpm-status-note|color-mix|服务未响应或不支持检查/);
+ for(const token of ['settings-card-fill','settings-card-stroke','dsw-radius-xl','button-primary-fill','button-primary-hover']) assert.ok(source.includes(token));
+ assert.doesNotMatch(JSON.stringify(statusView(passed,{})),/2026|note/);
  assert.match(source,/prefers-reduced-motion/);
 });
 
