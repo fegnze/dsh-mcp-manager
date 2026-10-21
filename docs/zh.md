@@ -6,7 +6,7 @@
 
 ## 状态
 
-面向 DSH **0.2.1-rc.2** 的开发预览。本地解析器、控制器、安全投影和 HTTP 测试通过；已核验 desktop 本地安装、导入/启用持久化及 uTools 实际资源发现。主人已确认插件重载后，现用 GUI 的连接检查成功并显示时间。完整断线重连、stdio 进程及回滚桌面场景尚未验证。本地包未发布。工程短名为 `dsh-mcp-manager`，npm 身份为 `@fegnze/dsh-mcp-manager`。保留稳定组件 ID 与 API 命名空间 `dsh-mcps-manager`，以兼容既有 profile 配置。scoped 本地安装切换已验证：仅保留 scoped bundle，主人确认 uTools 自动检查成功，Agent 只读资源请求亦成功。
+面向 DSH **0.2.1-rc.2** 的开发预览。本地解析器、控制器、安全投影和 HTTP 测试通过；已核验 desktop 本地安装、导入/启用持久化及 uTools 实际资源发现。主人已确认插件重载后，现用 GUI 的连接检查成功并显示时间。完整断线重连、stdio 进程及回滚桌面场景尚未验证。0.1.0 已通过交互式引导发布，12 个包文件与审查源码一致。0.1.1 更新交付说明，作为 OIDC 发布验证版本，不改变运行行为。Trusted Publisher 配置成功仍属待验证，必须在 npm 的两天窗口内完成首次 CI 实际发布；CI 发布结果、包字节及 provenance 应分别核验。工程短名为 `dsh-mcp-manager`，npm 身份为 `@fegnze/dsh-mcp-manager`。保留稳定组件 ID 与 API 命名空间 `dsh-mcps-manager`，以兼容既有 profile 配置。scoped 本地安装切换已验证：仅保留 scoped bundle，主人确认 uTools 自动检查成功，Agent 只读资源请求亦成功。
 
 ## 安装与入口
 
