@@ -20,6 +20,23 @@ test('keeps import form collapsed and refresh in compact header by default',asyn
  assert.equal(nodes.some(node=>node.type==='textarea'),false);assert.equal(nodes.some(node=>node.type==='div'&&node.props?.className==='mcpm-header'),true);
  const add=nodes.find(node=>node.type==='button'&&node.children[0]==='新增服务');assert.ok(add);add.props.onClick();assert.equal(f.states[7],true);f.cleanup();
 });
+test('card status decisions are explicit observations, not realtime health claims',()=>{
+ let statusView;
+ vm.runInNewContext(source,{window:{__ModuleLoader__:{load:spec=>{statusView=spec.factory(()=>({})).statusView;}}}});
+ const passed={serverName:'s',enabled:true,lastCheck:{successful:true,at:'2026-10-21T00:00:00Z'}};
+ assert.equal(typeof statusView,'function');
+ assert.match(statusView(passed,{}).label,/检查通过/);
+ assert.match(statusView({...passed,enabled:false},{}).label,/停用/);
+ assert.match(statusView(passed,{checking:'s'}).label,/检查中/);
+ assert.match(statusView({...passed,lastCheck:{successful:false}},{}).label,/未通过/);
+ assert.match(statusView({enabled:true},{external:true}).label,/未检测/);
+ assert.match(statusView(passed,{external:true}).label,/未检测/);
+ assert.doesNotMatch(JSON.stringify(statusView(passed,{})),/实时在线/);
+ assert.doesNotMatch(JSON.stringify(statusView({...passed,lastCheck:{successful:false,error:'SECRET'}},{})),/SECRET/);
+ assert.match(source,/mcpm-card/);
+ assert.match(source,/prefers-reduced-motion/);
+});
+
 test('registers the same panel in official settings and plugin slots',async()=>{
  const f=fixture();await tick();const [plugin,settings]=f.registrations;
  assert.equal(plugin.spec.name,'plugins.bundle.config');assert.equal(settings.spec.name,'settings.section');
